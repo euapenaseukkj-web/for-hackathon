@@ -62,7 +62,7 @@ export default function ForgotPasswordPage() {
                 </p>
               </div>
               <p className="text-slate-400 text-center mb-6">
-                The link expires in 1 hour. If you don't see the email, check your spam folder.
+                The link expires in 1 hour. If you don&apos;t see the email, check your spam folder.
               </p>
               <Link
                 href="/auth/login"
