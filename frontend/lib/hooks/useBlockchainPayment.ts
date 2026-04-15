@@ -96,6 +96,7 @@ export function useBlockchainPayment() {
 
         console.log('[Payment] Initiated:', data.sessionId);
         return data.sessionId;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         const errorMessage =
           error.message || 'Failed to initiate payment';
@@ -179,6 +180,7 @@ export function useBlockchainPayment() {
               method: 'wallet_switchEthereumChain',
               params: [{ chainId: `0x${WIRE_CHAIN_ID.toString(16)}` }],
             });
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           } catch (switchError: any) {
             // If chain doesn't exist, add it
             if (switchError.code === 4902) {
@@ -205,6 +207,7 @@ export function useBlockchainPayment() {
         }
 
         // ============ Now send transaction on correct network ============
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const provider = new ethers.BrowserProvider(window.ethereum as any);
         const signer = await provider.getSigner();
         const signerAddress = await signer.getAddress();
@@ -353,6 +356,7 @@ export function useBlockchainPayment() {
         localStorage.removeItem('pending_email');
 
         return true;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         const errorMessage = error.message || 'Failed to execute payment';
 
@@ -408,6 +412,7 @@ export function useBlockchainPayment() {
 
         setPaymentState(newState);
         return newState;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         console.error('[Payment] Status check failed:', error.message);
         return null;
