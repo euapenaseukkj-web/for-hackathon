@@ -35,7 +35,7 @@ export default function ForgotPasswordPage() {
       }
 
       setSubmitted(true);
-    } catch (err) {
+    } catch (_err) {
       setError('An unexpected error occurred');
     } finally {
       setLoading(false);
@@ -43,10 +43,10 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent mb-2">
+          <h1 className="text-4xl font-bold bg-linear-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent mb-2">
             PSL Pulse
           </h1>
           <p className="text-slate-400">Reset your password</p>
@@ -58,7 +58,7 @@ export default function ForgotPasswordPage() {
               <div className="bg-green-500/10 border border-green-500/30 text-green-400 p-6 rounded-lg mb-6 text-center">
                 <p className="font-semibold mb-2">Check your email!</p>
                 <p className="text-sm">
-                  We've sent a password reset link to <strong>{email}</strong>
+                  We&apos;ve sent a password reset link to <strong>{email}</strong>
                 </p>
               </div>
               <p className="text-slate-400 text-center mb-6">
@@ -66,7 +66,7 @@ export default function ForgotPasswordPage() {
               </p>
               <Link
                 href="/auth/login"
-                className="block w-full text-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg transition"
+                className="block w-full text-center px-6 py-3 bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg transition"
               >
                 Back to Login
               </Link>
@@ -75,7 +75,7 @@ export default function ForgotPasswordPage() {
             <div>
               <h2 className="text-2xl font-bold text-white mb-4">Reset Password</h2>
               <p className="text-slate-400 mb-6">
-                Enter your email address and we'll send you a link to reset your password.
+                Enter your email address and we&apos;ll send you a link to reset your password.
               </p>
 
               {error && (
@@ -100,7 +100,7 @@ export default function ForgotPasswordPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:opacity-50 text-white font-semibold rounded-lg transition mt-6"
+                  className="w-full py-3 bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:opacity-50 text-white font-semibold rounded-lg transition mt-6"
                 >
                   {loading ? 'Sending...' : 'Send Reset Link'}
                 </button>
