@@ -252,7 +252,9 @@ export default function MyTicketsPage() {
       const field = filters.sortBy.split('-')[0];
       const order = filters.sortBy.split('-')[1];
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let aValue: any = a[field as keyof Ticket];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let bValue: any = b[field as keyof Ticket];
 
       if (field === 'date') {
@@ -314,6 +316,7 @@ export default function MyTicketsPage() {
       setShowTransferModal(false);
       setTransferEmail('');
       setSelectedTicket(null);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error('Failed to transfer ticket');
     } finally {
@@ -397,7 +400,7 @@ export default function MyTicketsPage() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: i * 0.1 }}
-          className={`bg-gradient-to-br ${stat.color} opacity-10 hover:opacity-20 rounded-lg p-4 border border-white/10 transition`}
+          className={`bg-linear-to-br ${stat.color} opacity-10 hover:opacity-20 rounded-lg p-4 border border-white/10 transition`}
         >
           <p className="text-white/60 text-sm mb-1">{stat.label}</p>
           <div className="flex items-end gap-2">
@@ -545,7 +548,7 @@ export default function MyTicketsPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ delay: i * 0.05 }}
-              className="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-psl-rose/50 hover:bg-white/[0.08] transition group"
+              className="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-psl-rose/50 hover:bg-white/8 transition group"
             >
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
