@@ -6,7 +6,7 @@
  * @file app/auth/verify-email/page.tsx
  */
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import toast from 'react-hot-toast';
@@ -15,7 +15,7 @@ import { useAuth } from '@/context/GlobalAuthContext';
 /**
  * Email Verification Page Component
  */
-export default function VerifyEmailPage() {
+function VerifyEmailContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { user } = useAuth();
@@ -358,5 +358,13 @@ export default function VerifyEmailPage() {
         )}
       </motion.div>
     </main>
+  );
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <VerifyEmailContent />
+    </Suspense>
   );
 }

@@ -6,15 +6,26 @@
  * @file app/api/auth/verify-otp/route.ts
  */
 
+export const dynamic = 'force-dynamic';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import crypto from 'crypto';
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-key';
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
+let supabase: any = null;
+
+function getSupabaseClient() {
+  if (supabase) return supabase;
+  const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
+    throw new Error('Missing Supabase configuration');
+  }
+  supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
+  return supabase;
+}
 
 function generateJWT(userId: string, email: string): string {
   const header = Buffer.from(JSON.stringify({ alg: 'HS256', typ: 'JWT' })).toString('base64');

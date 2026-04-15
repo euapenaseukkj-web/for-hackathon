@@ -4,15 +4,26 @@
  * @file app/api/auth/delete-account\route.ts
  */
 
+export const dynamic = 'force-dynamic';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { verifyAuthToken } from '@/lib/auth/utils';
 import { sendAccountDeletedEmail } from '@/lib/email/service';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-  process.env.SUPABASE_SERVICE_KEY || ''
-);
+let supabase: any = null;
+
+function getSupabaseClient() {
+  if (supabase) return supabase;
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
+    throw new Error('Missing Supabase configuration');
+  }
+  supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_KEY
+  );
+  return supabase;
+}
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
