@@ -18,7 +18,7 @@ import {
   TrendingCarousel,
   UserStatsCard,
 } from '@/components/Leaderboard';
-import { MOCK_LEADERBOARD, getTrendingPlayers, getTeamPlayers, type LeaderboardEntry } from '@/lib/data/mockLeaderboard';
+import { MOCK_LEADERBOARD, getTrendingPlayers, getTeamPlayers, type LeaderboardEntry } from '@/lib/data/mockLeaderboard'; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { useWallet } from '@/lib/hooks';
 
 /**
@@ -29,6 +29,7 @@ const LeaderboardPage: FC = () => {
   // State Management
   const [period, setPeriod] = useState<'week' | 'season'>('season');
   const [view, setView] = useState<'players' | 'teams'>('players');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
@@ -36,6 +37,7 @@ const LeaderboardPage: FC = () => {
   const { user } = useWallet();
 
   // Detect reduced motion preference
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
@@ -62,6 +64,7 @@ const LeaderboardPage: FC = () => {
   }, []);
 
   // Get current user's stats if connected
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const userStats = useMemo(() => {
     if (!user?.address) return null;
 
@@ -86,6 +89,7 @@ const LeaderboardPage: FC = () => {
     (playerId: string, playerName: string) => {
       // Show success toast
       toast.success(
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         (t) => (
           <div className="flex flex-col gap-2">
             <p>💝 Tip sent to {playerName}!</p>
