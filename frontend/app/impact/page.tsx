@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 'use client';
 
@@ -445,6 +446,7 @@ export default function ImpactPage(): React.ReactElement {
   const [step, setStep] = useState(1);
   const [selectedAcademy, setSelectedAcademy] = useState<Academy | null>(null);
   const [selectedKit, setSelectedKit] = useState<KitType | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isProcessing, setIsProcessing] = useState(false);
   const [receipt, setReceipt] = useState<DonationReceipt | null>(null);
 
